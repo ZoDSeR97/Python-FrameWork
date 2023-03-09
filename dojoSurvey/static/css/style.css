@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', cursive;
+    margin: 0;
+    padding: 0;
+    /* border: 1px red dotted; */
+}
+
+body{
+    background-image: url('../R.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+h1, label{
+    color: gold;
+}
+
+h2{
+    color: whitesmoke;
+}
+
+.d-flex{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container{
+    padding: 20px;
+    margin: 12%;
+}
+
+.form-floating label{
+    color: black;
+}
