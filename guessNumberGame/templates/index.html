@@ -15,15 +15,29 @@
 <body>
     <div class="container bg-dark">
         <form action="/process" method="post">
+
             <h1>Welcome to Guess Number Game!</h1>
             <h2>I am thinking of a number between 1 and 100<br>Take a guess!</h2>
-            {% if session['res'] %}
-                <div class="myContainer {{color}}">
-                    <h1>{{hint}}</h1>
+            
+            <!-- Response only when user take a guess -->
+            {% if 'guess' in session %}
+                {% set hasWon = session['gameOver'] and session['att'] < 6 %}
+                <div class="myContainer {{'bg-danger' if not hasWon else 'bg-success'}}">
+                    {% if session['guess'] < session['num'] %}
+                        <h1>Too low!</h1> 
+                    {% elif session['guess'] > session['num'] %}
+                        <h1>Too high!</h1>
+                    {% elif hasWon %}
+                        <h1>{{session['num']}} was the number, took {{session['att']}} attempts</h1>
+                    {% else %}
+                        <h1>You lose! {{session['num']}} was the number</h1>
+                    {% endif %}
                 </div>
             {% endif %}
-            {% if not gotIt %}
+            <!-- Render accordingly -->
+            {% if not session['gameOver'] %}
                 <p>{{session['att']}} attempts</p>
+                <label for="guess">Your Guess:</label>
                 <input type="number" name="guessNum">
                 <button type="submit" class="btn bg-primary">Submit</button>
             {%else%}
