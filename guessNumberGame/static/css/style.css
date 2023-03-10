@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', cursive;
+    margin: 0;
+    padding: 0;
+    /* border: 1px red dotted; */
+    color: gold;
+}
+
+body{
+    background-image: url('../R.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+input{
+    color: black;
+}
+
+.container{
+    text-align: center;
+    padding: 40px;
+    margin: 16%;
+}
+.myContainer{
+    padding: 20px;
+}
