@@ -17,7 +17,7 @@ def index():
     if "res" not in session:
         session['res'] = False
     if "att" not in session:
-        session['att'] = 0
+        session['att'] = 1
     elif session['att'] < 5:
         if int(session['guess']) < session['num']:
             hint = "Too Low!"
@@ -31,7 +31,7 @@ def index():
     else:
         gotIt = True
         hint = "You Lose!"
-    return render_template("index.html", response=session['res'], att=session['att'], gotIt=gotIt, hint=hint, color=color)
+    return render_template("index.html", gotIt=gotIt, hint=hint, color=color)
 
 
 @app.route('/process', methods=['POST'])
