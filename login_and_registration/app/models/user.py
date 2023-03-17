@@ -51,10 +51,12 @@ class User(base.Base):
             errors["log"]="Invalid email or password"
         elif not errors:
             profile = User.get_one(data, condition='email')
-            if not profile \
-                and not bool(re.search(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$', data["password"]))\
-                    and not bcrypt.check_password_hash(profile[0].password, data['password']+profile[0].mumbo_jumbo):
-                    errors["log"]="Invalid email or password"
+            if not profile:
+                errors["log"]="Invalid email or password"
+            elif not bool(re.search(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$', data["password"])):
+                errors["log"]="Invalid email or password"
+            elif not bcrypt.check_password_hash(profile[0].password, data['password']+profile[0].mumbo_jumbo):
+                errors["log"]="Invalid email or password"
             
         for category, message in errors.items(): # iterate over the keys and values of the dictionary
             flash(message, category) # flash all of our errors at once, while also assigning them category filters
