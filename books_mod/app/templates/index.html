@@ -10,27 +10,27 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="row">
+    <div class="row container-fluid justified-content-center p-5">
         <div class="col container">
-            <form action="/newAuthor" method="post">
-                <h1>New Author</h1>
-                <label for="first_name">First Name:</label>
-                <input type="text" name="first_name">
-                <label for="last_name">Last Name:</label>
-                <input type="text" name="last_name">
-                <button type="submit">Create</button>
+            <h1>New Author</h1>
+            <form action="/newAuthor" method="post" class="d-flex flex-column">
+                <label for="first_name" class="form-label">First Name:</label>
+                <input type="text" name="first_name" class="form-control">
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input type="text" name="last_name" class="form-control">
+                <button type="submit" class="my-4 btn bg-primary">Create</button>
             </form>
         </div>
         <div class="col container">
             <h1>All Authors</h1>
             <div class="mb-3 container border border-2">
-                <ul class="list-group">
+                <ul class="list-group p-4">
                     {% for author in authors %}
-                        <a href="/authors/{{author.id}}">{{author.first_name}} {{author.last_name}}</a>
+                        <a href="/authors/{{author.id}}" class="m-2">{{author.first_name}} {{author.last_name}}</a>
                     {% endfor %}
                 </ul>
             </div>
-            <a href="/books">Add Book</a>
+            <a href="/books" class="btn bg-primary text-bg-light">Add Book</a>
         </div>
     </div>
     <!--Add script-->

@@ -10,10 +10,10 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="row">
+    <div class="row container-fluid justified-content-center p-5">
         <div class="col">
             <h1>{{author.first_name}} {{author.last_name}}</h1>
-            <table class="table">
+            <table class="table table-dark text-warning">
                 <tr>
                     <th>Title</th>
                     <th># of pages</th>
@@ -25,20 +25,22 @@
                     </tr>
                 {% endfor %}
             </table>
+            <a href="/" class="btn bg-primary-subtle w-10">Home</a>
         </div>
-        <div class="col">
+        <div class="col container-fluid">
             <h1>Add Author's Favorite</h1>
             <form action="/newFavBook" method="post">
-                <select name="info">
-                    {% for book in books %}
-                        <option value="{{book.id}} {{author.id}}">{{book.title}}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit">Add</button>
+                <div class="d-flex">
+                    <select name="info" class="form-select">
+                        {% for book in books %}
+                            <option value="{{book.id}} {{author.id}}">{{book.title}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn bg-primary-subtle">Add</button>
+                </div>
             </form>
         </div>
     </div>
-    <a href="/">Home</a>
     <!--Add script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
