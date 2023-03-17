@@ -3,4 +3,5 @@ OOP, Flask, MySQL, many more backend related
 
 python Library use:
   flask,
-  pymysql
+  pymysql,
+  flask-bcrypt
