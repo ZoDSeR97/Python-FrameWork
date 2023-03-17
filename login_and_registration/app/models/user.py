@@ -49,7 +49,7 @@ class User(base.Base):
         # test whether a field matches the pattern
         if not EMAIL_REGEX.match(data['email']): 
             errors["log"]="Invalid email or password"
-        elif not errors:
+        else:
             profile = User.get_one(data, condition='email')
             if not profile:
                 errors["log"]="Invalid email or password"
